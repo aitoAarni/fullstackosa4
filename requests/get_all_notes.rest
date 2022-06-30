@@ -4,8 +4,7 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-    "title": "lil buck",
+    "title": "lil buckaruuski",
     "author": "miä",
-    "url": "juutuubi.comi/fin",
-    "likes": 43
+    "likes": 42
 }

@@ -10,7 +10,6 @@ const mongoose = require('mongoose')
 
 
 mongoose.connect(config.MONGODB_URI)
-info(config.MONGODB_URI)
 
 app.use(cors())
 app.use(express.static('build'))
