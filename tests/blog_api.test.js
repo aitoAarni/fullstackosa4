@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const supertest = require('supertest')
 const app = require('../app')
+const blog = require('../models/blog')
 const Blog = require('../models/blog')
 const { info } = require('../utils/logger')
 const helper = require('./test_helper')
@@ -84,23 +85,4 @@ test('if content in post doesn\'t include title or url fields, status code 400',
         .post('/api/blogs')
         .send(blog)
         .expect(400)
-})
-
-test('Deleting blogs work', async () => {
-    const response = await api.get('/api/blogs')
-    const originalContent = response.body
-    const id = originalContent[0].id
-    await api
-        .delete(`/api/blogs/${id}`)
-    const content = await api.get('/api/blogs')
-    expect(content.body).toEqual(expect.not.arrayContaining(originalContent))
-})
-
-test('Updating blogs work', async () => {
-    const response = await api.get('/api/blogs')
-    const id = response.body[0].id
-    const updatedBlog = await api
-        .put(`/api/blogs/${id}`)
-        .send({ ...response.body[0], likes: 123123123 })
-    expect(updatedBlog.body.likes).toEqual(123123123)
 })

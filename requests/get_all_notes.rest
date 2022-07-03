@@ -6,5 +6,26 @@ Content-Type: application/json
 {
     "title": "lil buckaruuski",
     "author": "miä",
-    "likes": 42
+    "likes": 42,
+    "userId": "62c14966ffc2102a55f3cdc6"
 }
+###
+DELETE http://localhost:3003/api/blogs/62bd1c7b04e843dee90ed0dd
+###
+PUT http://localhost:3003/api/blogs/62bd1c7b04e843dee90ed0dd
+Content-Type: application/json
+
+{
+    "likes": 911
+}
+
+###
+POST http://localhost:3003/api/users
+Content-Type: application/json
+
+{
+    "username": "S",
+    "name": "Spede",
+    "password": "salis"
+}
+
