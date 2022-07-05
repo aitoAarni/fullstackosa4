@@ -1,4 +1,7 @@
+const config = require('./config')
+
 const info = (...params) => {
+    if (config.MODE === 'tesst') return
     console.log(...params)
 }
 

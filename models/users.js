@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const config = require('../utils/config')
+const { info } = require('../utils/logger')
 
+const blog = config.MODE === 'test' ? 'BlogTest' : 'Blog'
 
 const userSchema = mongoose.Schema({
     username: {
@@ -11,7 +13,7 @@ const userSchema = mongoose.Schema({
     hashedPass: String,
     blogs: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Blog'
+        ref: blog
     }],
 })
 
@@ -22,11 +24,11 @@ userSchema.set('toJSON', {
         delete returnedObject._id
         delete returnedObject.__v
         delete returnedObject.hashedPass
+        info('to string metodi', returnedObject)
     }
 })
 
 let name = 'User'
-console.log('mode: ', config.MODE)
 if (config.MODE === 'test') name = 'UserTest'
 
 module.exports = mongoose.model(name, userSchema)

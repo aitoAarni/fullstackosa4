@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const config = require('../utils/config')
 
+const user = config.MODE === 'test' ? 'UserTest' : 'User'
 
 const blogSchema = mongoose.Schema({
     title: String,
@@ -8,8 +9,8 @@ const blogSchema = mongoose.Schema({
     url: String,
     likes: { type: Number, default: 0 },
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        type: String,
+        ref: user
     }
 })
 

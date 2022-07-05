@@ -42,10 +42,10 @@ const initialBlogs = [
 
 const nonExistingId = async () => {
     const blog = new Blog({ title: 'none', author: 'none', url: 'none', likes: 0 })
-    await note.save()
-    await note.remove()
+    await blog.save()
+    await blog.remove()
 
-    return note._id.toString()
+    return blog._id.toString()
 }
 
 const blogsInDb = async () => {
